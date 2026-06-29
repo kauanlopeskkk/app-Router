@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "titulo": "Introdução ao Next.js",
+    "autor": "Kauan",
+    "data": "20-06-2026",
+    "descrição": "Aprenda os conceitos básicos do Next.js 15.",
+    "conteudo": "O Next.js trouxe diversas novidades",
+    "slug": "introducao-ao-nextjs-15"
+  },
+  {
+    "id": 2,
+    "titulo": "Server Components",
+    "autor": "Pedro",
+    "data": "31-11-2025",
+    "descrição": "Entenda os Server Components.",
+    "conteudo": "Os Server Components executam no servidor",
+    "slug": "server-components"
+  },
+  {
+    "id": 3,
+    "titulo": "CRUD com Next.js",
+    "autor": "João",
+    "data": "28-06-2026",
+    "descrição": "Aprenda a implementar operações CRUD no Next.js com App Router.",
+    "conteudo": "CRUD significa Create, Read, Update e Delete. É um padrão fundamental para manipular dados em aplicações web. Com o Next.js 15, você pode implementar CRUD de forma elegante usando Server Actions e o novo App Router.",
+    "slug": "crud"
+  }
+]
