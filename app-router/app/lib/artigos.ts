@@ -1,7 +1,5 @@
 ﻿import artigos from "@/app/data/artigo.json";
 
-const APIURL = "https://crudcrud.com/api/f4ba693d2451492d8b5870c5d99efb93";
-
 export type Artigo = {
   id: number;
   titulo: string;

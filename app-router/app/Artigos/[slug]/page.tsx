@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { getArtigo, getArtigos } from "@/app/lib/artigos";
 
 export const dynamic = "force-static";
+export const dynamicParams = false;
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -24,7 +25,8 @@ export async function generateMetadata({
 
   if (!artigo) {
     return {
-      title: "Artigo nao encontrado",
+      title: "Artigo não encontrado",
+      description: "O artigo solicitado não foi encontrado.",
     };
   }
 
@@ -43,7 +45,7 @@ export default async function Artigo({ params }: PageProps) {
   }
 
   return (
-    <main style={{ padding: "30px" }}>
+    <main style={{ padding: "30px", maxWidth: "800px", margin: "0 auto" }}>
       <h1>{artigo.titulo}</h1>
 
       <p>
@@ -56,7 +58,7 @@ export default async function Artigo({ params }: PageProps) {
 
       <hr />
 
-      <p>{artigo.conteudo}</p>
+      <p style={{ whiteSpace: "pre-line" }}>{artigo.conteudo}</p>
     </main>
   );
 }
