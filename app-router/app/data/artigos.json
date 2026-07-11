@@ -1,18 +1,17 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "titulo": "Guia Completo do Next.js 15",
     "autor": "Leo Developer",
-    "descrição": "Aprenda tudo sobre o Next.js 15, desde a configuração inicial até recursos avançados.",
-    "data_publicacao": "2026-07-10",
+    "dataPublicacao": "2026-07-10",
     "conteudo": "O Next.js 15 traz uma série de melhorias e novos recursos que facilitam o desenvolvimento de aplicações web modernas. Neste guia, vamos explorar desde a instalação e configuração do ambiente até a utilização de funcionalidades avançadas como roteamento dinâmico, otimização de imagens e integração com APIs externas. Prepare-se para elevar suas habilidades em desenvolvimento web com este framework poderoso.",
     "slug": "guia-completo-nextjs-15"
   },
   {
-    "id": 2,
-    "titulo": "SEO Dinãmico com App Router",
+    "id": "2",
+    "titulo": "SEO Dinâmico com App Router",
     "autor": "Leo Developer",
-    "data_publicacao": "2026-07-09",
+    "dataPublicacao": "2026-07-09",
     "conteudo": "O App Router do Next.js 15 permite a criação de rotas dinâmicas que podem ser otimizadas para SEO. Neste artigo, vamos explorar como configurar rotas dinâmicas, gerar metadados personalizados e melhorar a indexação do seu site nos motores de busca. Aprenda técnicas avançadas para garantir que suas páginas sejam encontradas facilmente pelos usuários.",
     "slug": "seo-dinamico-app-router"
   }

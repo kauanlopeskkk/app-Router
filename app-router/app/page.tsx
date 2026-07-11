@@ -1,28 +1,43 @@
-﻿import Link from "next/link";
-import { getArtigos } from "@/app/lib/artigos";
+﻿import Link from 'next/link';
+import articlesData from './data/artigos.json';
 
-export const dynamic = "force-static";
+// Formato da data para exibição
+const formatarData = (data: string) => {
+  return new Date(data).toLocaleDateString('pt-BR', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+};
 
-export default async function Home() {
-  const artigos = await getArtigos();
-
+export default function Home() {
   return (
-    <main style={{ padding: "30px", maxWidth: "800px", margin: "0 auto" }}>
-      <h1>Meu Blog</h1>
-
-      {artigos.map((artigo) => (
-        <article key={artigo.id} style={{ marginBottom: "24px" }}>
-          <h2>{artigo.titulo}</h2>
-
-          <p>
-            <strong>{artigo.autor}</strong> - {artigo.data}
-          </p>
-
-          <p>{artigo.descricao}</p>
-
-          <Link href={`/artigos/${artigo.slug}`}>Ler artigo</Link>
-        </article>
-      ))}
+    <main className="container mx-auto p-4">
+      <h1 className="text-3xl font-bold mb-6">Últimos Artigos</h1>
+      
+      <div className="grid gap-6 md:grid-cols-2">
+        {articlesData.map((artigo) => (
+          <article key={artigo.id} className="border rounded-lg p-4 shadow-sm hover:shadow-md transition">
+            <h2 className="text-xl font-semibold mb-2">
+              <Link href={`/artigos/${artigo.slug}`} className="text-blue-600 hover:underline">
+                {artigo.titulo}
+              </Link>
+            </h2>
+            <p className="text-sm text-gray-500 mb-3">
+              Por {artigo.autor} em {formatarData(artigo.dataPublicacao)}
+            </p>
+            <p className="text-gray-700 line-clamp-3">
+              {artigo.conteudo}
+            </p>
+            <Link 
+              href={`/artigos/${artigo.slug}`} 
+              className="inline-block mt-4 text-sm font-medium text-blue-600 hover:text-blue-800"
+            >
+              Ler mais &rarr;
+            </Link>
+          </article>
+        ))}
+      </div>
     </main>
   );
 }
