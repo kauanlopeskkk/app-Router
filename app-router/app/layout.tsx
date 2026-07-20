@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Link from "next/link";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -16,16 +17,26 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body className={`${inter.className} bg-gray-50 min-h-screen`}>
-        <nav className="bg-white shadow-sm p-4 mb-8">
-          <div className="container mx-auto">
-            <a href="/" className="text-xl font-bold text-blue-600">Meu Blog</a>
-          </div>
-        </nav>
-        {children}
-        <footer className="bg-gray-800 text-white text-center p-6 mt-12">
-          <p>&copy; 2026 Meu Blog. Desenvolvido com Next.js 15.</p>
-        </footer>
+      <body className={inter.className}>
+        <div className="site-shell">
+          <header className="site-header">
+            <nav className="nav-bar" aria-label="Principal">
+              <Link href="/" className="brand">
+                <span className="brand-mark">N</span>
+                <span>Next Blog</span>
+              </Link>
+              <Link href="/" className="nav-link">
+                Artigos
+              </Link>
+            </nav>
+          </header>
+
+          {children}
+
+          <footer className="site-footer">
+            <p>&copy; 2026 Next Blog. Desenvolvido com Next.js.</p>
+          </footer>
+        </div>
       </body>
     </html>
   );

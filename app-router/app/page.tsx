@@ -1,43 +1,59 @@
-﻿import Link from 'next/link';
-import articlesData from './data/artigos.json';
+import Link from "next/link";
+import articlesData from "./data/artigos.json";
 
-// Formato da data para exibição
 const formatarData = (data: string) => {
-  return new Date(data).toLocaleDateString('pt-BR', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
+  return new Date(data).toLocaleDateString("pt-BR", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   });
 };
 
 export default function Home() {
   return (
-    <main className="container mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-6">Últimos Artigos</h1>
-      
-      <div className="grid gap-6 md:grid-cols-2">
-        {articlesData.map((artigo) => (
-          <article key={artigo.id} className="border rounded-lg p-4 shadow-sm hover:shadow-md transition">
-            <h2 className="text-xl font-semibold mb-2">
-              <Link href={`/artigos/${artigo.slug}`} className="text-blue-600 hover:underline">
-                {artigo.titulo}
+    <main className="home-page">
+      <section className="hero-section">
+        <div className="hero-content">
+          <p className="eyebrow">Blog de desenvolvimento web</p>
+          <h1>Artigos sobre Next.js, App Router e boas práticas</h1>
+          <p className="hero-text">
+            Conteúdos diretos para aprender rotas dinâmicas, SEO, performance e
+            construção de aplicações modernas com uma experiência mais elegante.
+          </p>
+        </div>
+      </section>
+
+      <section className="articles-section" aria-labelledby="articles-title">
+        <div className="section-heading">
+          <p className="eyebrow">Leituras recentes</p>
+          <h2 id="articles-title">Últimos artigos</h2>
+        </div>
+
+        <div className="articles-grid">
+          {articlesData.map((artigo) => (
+            <article key={artigo.id} className="article-card">
+              <div className="article-card-top">
+                <span className="article-tag">Next.js</span>
+                <time dateTime={artigo.dataPublicacao}>
+                  {formatarData(artigo.dataPublicacao)}
+                </time>
+              </div>
+
+              <h3>
+                <Link href={`/artigos/${artigo.slug}`}>{artigo.titulo}</Link>
+              </h3>
+
+              <p className="article-author">Por {artigo.autor}</p>
+              <p className="article-description">{artigo.conteudo}</p>
+
+              <Link className="read-link" href={`/artigos/${artigo.slug}`}>
+                Ler artigo
+                <span aria-hidden="true">→</span>
               </Link>
-            </h2>
-            <p className="text-sm text-gray-500 mb-3">
-              Por {artigo.autor} em {formatarData(artigo.dataPublicacao)}
-            </p>
-            <p className="text-gray-700 line-clamp-3">
-              {artigo.conteudo}
-            </p>
-            <Link 
-              href={`/artigos/${artigo.slug}`} 
-              className="inline-block mt-4 text-sm font-medium text-blue-600 hover:text-blue-800"
-            >
-              Ler mais &rarr;
-            </Link>
-          </article>
-        ))}
-      </div>
+            </article>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }
